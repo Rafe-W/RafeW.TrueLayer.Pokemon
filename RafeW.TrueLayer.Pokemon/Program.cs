@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RafeW.TrueLayer.Pokemon
+namespace RafeW.TrueLayer.Pokemon.Api
 {
     public class Program
     {
