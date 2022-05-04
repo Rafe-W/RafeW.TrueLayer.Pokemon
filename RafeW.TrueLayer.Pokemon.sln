@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RafeW.TrueLayer.Pokemon.Api
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RafeW.TrueLayer.Pokemon.Engine", "RafeW.TrueLayer.Pokemon.Engine\RafeW.TrueLayer.Pokemon.Engine.csproj", "{8920472F-FAB7-4F26-AAD8-BDE3C8FE703C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RafeW.TrueLayer.Pokemon.Engine.Tests", "RafeW.TrueLayer.Pokemon.Engine.Tests\RafeW.TrueLayer.Pokemon.Engine.Tests.csproj", "{CF4E894B-412C-48E5-894B-6C55B65FDD6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8920472F-FAB7-4F26-AAD8-BDE3C8FE703C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8920472F-FAB7-4F26-AAD8-BDE3C8FE703C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8920472F-FAB7-4F26-AAD8-BDE3C8FE703C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF4E894B-412C-48E5-894B-6C55B65FDD6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4E894B-412C-48E5-894B-6C55B65FDD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4E894B-412C-48E5-894B-6C55B65FDD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4E894B-412C-48E5-894B-6C55B65FDD6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
