@@ -9,7 +9,7 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services
     }
 
     [Injectable]
-    public class PokemonTranslationService
+    public class PokemonTranslationService : IPokemonTranslationService
     {
         private IPokeAPIService PokeAPIService { get; }
         private ITranslationsService TranslationsService { get; }

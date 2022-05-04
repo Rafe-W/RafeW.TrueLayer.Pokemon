@@ -9,7 +9,7 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Api
     }
 
     [Injectable]
-    public class TranslationsService
+    public class TranslationsService : ITranslationsService
     {
         private ICacheService CacheService { get; }
 

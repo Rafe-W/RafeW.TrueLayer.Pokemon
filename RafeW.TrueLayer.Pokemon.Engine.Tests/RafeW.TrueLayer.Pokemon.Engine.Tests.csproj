@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Test\Services\" />
+    <Folder Include="Test\Services\Api\" />
   </ItemGroup>
 
 </Project>
