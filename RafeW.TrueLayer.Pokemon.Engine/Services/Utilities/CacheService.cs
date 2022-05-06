@@ -6,7 +6,7 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Utilities
 {
     public interface ICacheService
     {
-
+        T ProcessCaching<T>(string cacheKey, Func<T> retrieveCacheableData, TimeSpan expirationTimeSpan);
     }
 
     [Injectable]
