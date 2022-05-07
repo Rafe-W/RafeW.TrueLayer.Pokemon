@@ -93,6 +93,40 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Tests.Test.Services.Api
         }
 
         [TestMethod]
+        public async Task ToShakespearean_NonHttpError()
+        {
+            //Arrange
+            var container = new TranslationsServiceContainer(true);
+            var result = new RequestResult<TranslationResult>();
+            var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
+            result.SetFailure(new Exception("A generic error"));
+
+            container.RequestHandlerService.Setup(r => r.TrySendRequest<TranslationResult>(It.IsAny<string>(), HttpMethod.Post, null)).ReturnsAsync(result);
+            container.RequestHandlerService.SetupGet(r => r.Settings).Returns(new Translations_ApiSettings());
+
+            try
+            {
+                //Act
+                var _ = await container.TranslationsService.ToShakespearean(text);
+            }
+            catch (Exception ex)
+            {
+                //Assert
+                if (ex is PokemonTranslationException pokeEx)
+                {
+                    Assert.AreEqual(result.Exception, pokeEx.InnerException);
+                    return;
+                }
+                else
+                {
+                    Assert.Fail("Unexpected exception type");
+                }
+            }
+
+            Assert.Fail("No exception thrown");
+        }
+
+        [TestMethod]
         public async Task ToShakespearean_Success()
         {
             //Arrange

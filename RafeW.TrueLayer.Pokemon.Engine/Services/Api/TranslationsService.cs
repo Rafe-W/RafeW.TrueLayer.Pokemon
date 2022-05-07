@@ -36,25 +36,25 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Api
             var translationResult = await CacheService.ProcessCachingAsync($"Translations:Shakespeare:{translationKey}", async () =>
                 {
                     var result = await RequestHandlerService.TrySendRequest<TranslationResult>($"shakespeare.json?text={WebUtility.UrlEncode(formatText)}", HttpMethod.Post);
-                    if (!result.Success)
-                    {
-                        if (result.Exception is HttpRequestException httpEx)
-                        {
-                            string message = PokemonTranslationApiException.GenericFriendlyMessage;
-                            switch (httpEx.StatusCode)
-                            {
-                                case HttpStatusCode.TooManyRequests:
-                                    message = PokemonTranslationApiException.TooManyRequestsFriendlyMessage;
-                                    break;
-                                default:
-                                    break;
-                            }
+                    if (result.Success)
+                        return result.Response;
 
-                            throw new PokemonTranslationApiException(RequestHandlerService.Settings.ApiIdentifier, httpEx.StatusCode.Value, message, result.Exception);
+                    if (result.Exception is HttpRequestException httpEx)
+                    {
+                        string message = PokemonTranslationApiException.GenericFriendlyMessage;
+                        switch (httpEx.StatusCode)
+                        {
+                            case HttpStatusCode.TooManyRequests:
+                                message = PokemonTranslationApiException.TooManyRequestsFriendlyMessage;
+                                break;
+                            default:
+                                break;
                         }
+
+                        throw new PokemonTranslationApiException(RequestHandlerService.Settings.ApiIdentifier, httpEx.StatusCode.Value, message, result.Exception);
                     }
 
-                    return result.Response;
+                    throw new PokemonTranslationException("", "Sorry, an unknown error occurred", result.Exception);
                 }, TimeSpan.FromMinutes(10));
 
             if (translationResult.Success.Total == 0)
