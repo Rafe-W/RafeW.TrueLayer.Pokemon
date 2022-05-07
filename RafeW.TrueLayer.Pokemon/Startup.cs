@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RafeW.TrueLayer.Pokemon.Engine.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,9 @@ namespace RafeW.TrueLayer.Pokemon.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddMemoryCache();
             services.AddControllers();
+            services.AddPokemonEngine();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RafeW.TrueLayer.Pokemon.Api", Version = "v1" });

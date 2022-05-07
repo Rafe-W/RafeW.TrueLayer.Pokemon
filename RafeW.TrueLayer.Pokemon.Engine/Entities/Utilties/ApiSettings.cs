@@ -28,7 +28,7 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Entities.Utilities
 
     public class Translation_ApiSettings : IApiSettings
     {
-        public const string ApiIdentifier = "Translation";
+        public const string ApiIdentifier = "Translations";
 
         public Dictionary<string, string> DefaultHeaders { get; set; }
         public Uri BaseUrl { get; set; }
