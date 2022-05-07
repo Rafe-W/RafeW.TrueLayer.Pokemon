@@ -19,6 +19,8 @@ Via exe:
 * Open `RafeW.TrueLayer.Pokemon.Api.exe`
 * Console window will open, leave open whilst using API.
 
+> Built for win64, please let me know if it's needed on another platform.
+
 ## Usage notes
 * Translation API is rate limited to 5 requests. Appropriate response will be given when this limit is reached.
 * Requests to PokeAPI and Translation API are cached for 10 minutes each.
