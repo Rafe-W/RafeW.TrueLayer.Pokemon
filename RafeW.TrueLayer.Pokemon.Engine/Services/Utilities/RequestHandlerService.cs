@@ -21,7 +21,7 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Utilities
     [Injectable]
     public class RequestHandlerService<TApiSettings> : IRequestHandlerService<TApiSettings> where TApiSettings : IApiSettings, new()
     {
-        private TApiSettings Settings { get; }
+        public TApiSettings Settings { get; }
         public RequestHandlerService(IConfiguration configuration)
         {
             var settings = new TApiSettings();
@@ -29,8 +29,13 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Utilities
             var apiSection = configSection.GetSection(settings.ApiIdentifier);
 
             settings.BaseUrl = new Uri(apiSection["BaseUrl"]);
-            settings.DefaultHeaders = apiSection.GetSection("DefaultHeaders")?.GetChildren().ToDictionary(kv => kv.Key, kv => kv.Value);
+            settings.DefaultHeaders = apiSection.GetSection("DefaultHeaders")?.GetChildren().ToDictionary(kv => kv.Key, kv => kv.Value) ?? new Dictionary<string, string>();
 
+            Settings = settings;
+        }
+
+        public RequestHandlerService(TApiSettings settings)
+        {
             Settings = settings;
         }
 

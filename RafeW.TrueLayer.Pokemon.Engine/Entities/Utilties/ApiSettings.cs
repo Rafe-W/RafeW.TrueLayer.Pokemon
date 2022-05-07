@@ -31,7 +31,7 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Entities.Utilities
         public override string ApiIdentifier => Identifier;
     }
 
-    public class Translation_ApiSettings : ApiSettingsBase
+    public class Translations_ApiSettings : ApiSettingsBase
     {
         public const string Identifier = "Translations";
 

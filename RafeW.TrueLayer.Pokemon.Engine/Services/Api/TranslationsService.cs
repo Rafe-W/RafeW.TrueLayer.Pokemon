@@ -21,8 +21,8 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Api
     {
         public Regex FormatRegex { get; set; } = new Regex("(\n)|(\f)");
         private ICacheService CacheService { get; }
-        private IRequestHandlerService<Translation_ApiSettings> RequestHandlerService { get; }
-        public TranslationsService(ICacheService cacheService, IRequestHandlerService<Translation_ApiSettings> requestHandlerService)
+        private IRequestHandlerService<Translations_ApiSettings> RequestHandlerService { get; }
+        public TranslationsService(ICacheService cacheService, IRequestHandlerService<Translations_ApiSettings> requestHandlerService)
         {
             CacheService = cacheService;
             RequestHandlerService = requestHandlerService;
