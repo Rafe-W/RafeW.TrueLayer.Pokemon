@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RafeW.TrueLayer.Pokemon.Api", "RafeW.TrueLayer.Pokemon\RafeW.TrueLayer.Pokemon.Api.csproj", "{5B177E00-CAD2-4824-8BF4-9C009D17E48E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RafeW.TrueLayer.Pokemon.Api", "RafeW.TrueLayer.Pokemon\RafeW.TrueLayer.Pokemon.Api.csproj", "{5B177E00-CAD2-4824-8BF4-9C009D17E48E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RafeW.TrueLayer.Pokemon.Engine", "RafeW.TrueLayer.Pokemon.Engine\RafeW.TrueLayer.Pokemon.Engine.csproj", "{8920472F-FAB7-4F26-AAD8-BDE3C8FE703C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RafeW.TrueLayer.Pokemon.Engine", "RafeW.TrueLayer.Pokemon.Engine\RafeW.TrueLayer.Pokemon.Engine.csproj", "{8920472F-FAB7-4F26-AAD8-BDE3C8FE703C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RafeW.TrueLayer.Pokemon.Engine.Tests", "RafeW.TrueLayer.Pokemon.Engine.Tests\RafeW.TrueLayer.Pokemon.Engine.Tests.csproj", "{CF4E894B-412C-48E5-894B-6C55B65FDD6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RafeW.TrueLayer.Pokemon.Engine.Tests", "RafeW.TrueLayer.Pokemon.Engine.Tests\RafeW.TrueLayer.Pokemon.Engine.Tests.csproj", "{CF4E894B-412C-48E5-894B-6C55B65FDD6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6DD6DEF8-F63D-41A2-9A5F-F0A1C4E701A1}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

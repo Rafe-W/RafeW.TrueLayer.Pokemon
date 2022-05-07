@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using RafeW.TrueLayer.Pokemon.Engine.Helpers;
 using RafeW.TrueLayer.Pokemon.Engine.Services;
 using System;
@@ -21,7 +23,9 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Tests.Test.Helpers
             var serviceCollection = new ServiceCollection();
             //Add external dependencies
             serviceCollection.AddMemoryCache();
-
+            var configurationBuilder = new ConfigurationBuilder();
+            configurationBuilder.AddJsonFile("appsettings.test.json");
+            serviceCollection.AddSingleton<IConfiguration>(configurationBuilder.Build());
             //Act
             serviceCollection.AddPokemonEngine();
             var provider = serviceCollection.BuildServiceProvider();
