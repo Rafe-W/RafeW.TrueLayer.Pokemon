@@ -16,23 +16,25 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Entities.Utilities
         Uri BaseUrl { get; set; }
     }
 
-    public class PokeAPI_ApiSettings : IApiSettings
+    public abstract class ApiSettingsBase : IApiSettings
     {
-        public const string ApiIdentifier = "PokeAPI";
-
         public Dictionary<string, string> DefaultHeaders { get; set; }
         public Uri BaseUrl { get; set; }
 
-        string IApiSettings.ApiIdentifier => ApiIdentifier;
+        public abstract string ApiIdentifier { get; }
     }
 
-    public class Translation_ApiSettings : IApiSettings
+    public class PokeAPI_ApiSettings : ApiSettingsBase
     {
-        public const string ApiIdentifier = "Translations";
+        public const string Identifier = "PokeAPI";
 
-        public Dictionary<string, string> DefaultHeaders { get; set; }
-        public Uri BaseUrl { get; set; }
+        public override string ApiIdentifier => Identifier;
+    }
 
-        string IApiSettings.ApiIdentifier => ApiIdentifier;
+    public class Translation_ApiSettings : ApiSettingsBase
+    {
+        public const string Identifier = "Translations";
+
+        public override string ApiIdentifier => Identifier;
     }
 }
