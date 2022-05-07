@@ -1,5 +1,6 @@
 ﻿using RafeW.TrueLayer.Pokemon.Engine.Entities.Translations;
 using RafeW.TrueLayer.Pokemon.Engine.Entities.Utilities;
+using RafeW.TrueLayer.Pokemon.Engine.Exceptions;
 using RafeW.TrueLayer.Pokemon.Engine.Helpers;
 using RafeW.TrueLayer.Pokemon.Engine.Services.Utilities;
 using System;
@@ -32,14 +33,32 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Api
         {
             var formatText = FormatRegex.Replace(text, " ").Replace("  ", " "); //Replace any double spaces created as a result
             var translationKey = GetStringBase64(formatText);
-            var translationResult = await CacheService.ProcessCaching($"Translations:Shakespeare:{translationKey}", async () =>
-            {
-                var result = await RequestHandlerService.TrySendRequest<TranslationResult>($"shakespeare.json?text={WebUtility.UrlEncode(formatText)}", HttpMethod.Post);
-                if (!result.Success)
-                    return null;
-                return result.Response;
-            }, TimeSpan.FromMinutes(10));
-            //TODO: Verify that translation came through via details in response object.
+            var translationResult = await CacheService.ProcessCachingAsync($"Translations:Shakespeare:{translationKey}", async () =>
+                {
+                    var result = await RequestHandlerService.TrySendRequest<TranslationResult>($"shakespeare.json?text={WebUtility.UrlEncode(formatText)}", HttpMethod.Post);
+                    if (!result.Success)
+                    {
+                        if (result.Exception is HttpRequestException httpEx)
+                        {
+                            string message = PokemonTranslationApiException.GenericFriendlyMessage;
+                            switch (httpEx.StatusCode)
+                            {
+                                case HttpStatusCode.TooManyRequests:
+                                    message = PokemonTranslationApiException.TooManyRequestsFriendlyMessage;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            throw new PokemonTranslationApiException(RequestHandlerService.Settings.ApiIdentifier, httpEx.StatusCode.Value, message, result.Exception);
+                        }
+                    }
+
+                    return result.Response;
+                }, TimeSpan.FromMinutes(10));
+
+            if (translationResult.Success.Total == 0)
+                throw new PokemonTranslationException("", "Sorry, the translation was unsuccessful", null);
             return translationResult.Contents.Translated;
         }
 

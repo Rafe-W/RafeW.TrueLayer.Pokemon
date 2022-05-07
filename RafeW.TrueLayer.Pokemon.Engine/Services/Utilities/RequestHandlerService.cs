@@ -14,6 +14,7 @@ namespace RafeW.TrueLayer.Pokemon.Engine.Services.Utilities
 {
     public interface IRequestHandlerService<TApiSettings> where TApiSettings : IApiSettings, new()
     {
+        public TApiSettings Settings { get; }
         public Task<TResponse> SendRequest<TResponse>(string path, HttpMethod method, object bodyArgs = null);
         Task<RequestResult<TResponse>> TrySendRequest<TResponse>(string path, HttpMethod method, object bodyArgs = null);
     }
