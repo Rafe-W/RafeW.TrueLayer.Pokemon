@@ -1,8 +1,8 @@
 # Pokemon API
 
 ## Requirements
-* Written using Visual Studio 2022 with .NET (Core) 5 installed. 
-* You will need the ASP.NET and Web Development module installed
+* Written using Visual Studio (VS) 2022 with .NET (Core) 5 installed. 
+* You will need the ASP.NET and Web Development module installed if running from VS
 
 
 ## Usage
