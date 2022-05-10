@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RafeW.TrueLayer.Pokemon.Api.Models.Pokemon;
 using RafeW.TrueLayer.Pokemon.Engine.Entities.PokeAPI;
 using RafeW.TrueLayer.Pokemon.Engine.Entities.Utilities;
 using RafeW.TrueLayer.Pokemon.Engine.Exceptions;
@@ -28,9 +29,14 @@ namespace RafeW.TrueLayer.Pokemon.Api.Controllers
         {
             try
             {
-                var translatedText = await PokemonTranslationService.GetFlavourTextAsShakespearean(pokemonName);
+                var translationResult = new TranslationResponse
+                {
+                    Name = pokemonName
+                };
 
-                return new JsonResult(translatedText);
+                translationResult.Description = await PokemonTranslationService.GetFlavourTextAsShakespearean(pokemonName);
+
+                return new JsonResult(translationResult);
             }
             catch(PokemonTranslationException pokeEx)
             {
